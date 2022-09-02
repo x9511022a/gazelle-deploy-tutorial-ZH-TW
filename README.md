@@ -1,6 +1,6 @@
 # Gazelle部署手冊
 ## 前置需求
-- Debian base System(Debian,Ubuntu)
+- Debian base System(Debian,Ubuntu)，這邊推薦使用Debian 9
 - Postgresql 
 - Java ，這邊建議使用 Zulu
 ## 安裝Java
@@ -81,6 +81,83 @@ sudo systemctl daemon-reload
 ```
 
 ## Deploy 各個系統
+### Gazelle SSO
+#### 前置需求
+- 安裝zulu8
+```shell
+sudo apt install zulu8-ca-jre-headless
+```
+- 安裝tomcat8
+```shell
+sudo apt install tomcat8
+```
+
+- 設定tomcat，新增JAVA_HOME=/usr/lib/jvm/zulu8-ca-amd64
+```shell
+sudo vi /etc/init.d/tomcat8
+```
+
+- 刪除tomcat預設內容
+```shell
+sudo rm -rf /var/lib/tomcat8/webapps/ROOT
+```
+
+- 下載並部署 Gazelle SSO
+```shell
+cd /var/lib/tomcat8/webapps
+sudo wget https://gazelle.ihe.net/apereo-cas-gazelle/cas.war
+sudo mv cas.war sso.war
+```
+
+- 下載、設定cas設定檔
+```shell
+sudo su
+cd /etc
+wget https://gazelle.ihe.net/apereo-cas-gazelle/cas.tgz
+tar zxvf cas.tgz
+mkdir /etc/cas/log
+chown -R tomcat8:tomcat8 cas
+```
+將以下設定檔中的stretch.localdomain改成自己的FQDN
+```shell
+vi /etc/cas/config/cas.properties
+```
+並將以下database名稱改成與TestManagement相同的名稱，通常為gazelle
+```properties
+cas.authn.attributeRepository.jdbc[0].url=jdbc:postgresql://localhost:5432/cas
+cas.authn.jdbc.query[0].url=jdbc:postgresql://localhost:5432/cas
+```
+修改/etc/cas/config/log4j2.xml，在</Policies>下的<RollingFile>類別中加入下面設定
+```xml
+            <DefaultRolloverStrategy max="5">
+                <Delete basePath="${sys:cas.log.dir}">
+                  <IfFileName glob="*.log" />
+                  <IfLastModified age="7d" />
+                </Delete>
+            </DefaultRolloverStrategy>
+```
+- 建立SSO設定檔
+大部分Gazelle Tools會去/opt/gazelle/cas裡讀取SSO設定檔
+```shell
+ sudo mkdir -p /opt/gazelle/cas
+ sudo touch /opt/gazelle/cas/file.properties
+ sudo chown -R jboss:jboss-admin /opt/gazelle/cas
+ sudo chmod -R g+w /opt/gazelle/cas
+```
+
+- 為了連線到tomcat與jboss，你需要在Apache2的設定檔中增加以下類似設定
+```conf
+<Location /sso>
+   ProxyPass        ajp://localhost:8209/sso
+   ProxyPassReverse ajp://localhost:8209/sso
+</Location>
+```
+
+- 修復log4j漏洞
+在/usr/share/tomcat8/bin中的setenv.sh中增加下列參數，若沒有此檔案就建立它
+```shell
+CATALINA_OPTS="$CATALINA_OPTS -Dlog4j2.formatMsgNoLookups=true"
+```
 ### TestManagement
 請到[Nexus](https://gazelle.ihe.net/nexus/index.html#nexus-search;gav~~gazelle-tm-ear*~~~)下載最新版，example:
 

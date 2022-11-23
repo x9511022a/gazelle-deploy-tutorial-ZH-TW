@@ -127,6 +127,16 @@ sudo apt install tomcat8
 sudo vi /etc/init.d/tomcat8
 ```
 
+- 修改 server.xml 中的設定
+```shell
+sudo vim /var/lib/tomcat8/conf/server.xml
+```
+
+並將以下選項的註釋刪除，改成以下內容，port部分可以自行修改
+```
+<Connector port="8209" protocol="AJP/1.3" redirectPort="8443" secretRequired="false" />
+```
+
 - 刪除 tomcat 預設內容
 
 ```shell
@@ -135,7 +145,7 @@ sudo rm -rf /var/lib/tomcat8/webapps/ROOT
 
 - 下載並部署 Gazelle SSO
 
-```shellm
+```shell
 cd /var/lib/tomcat8/webapps
 sudo wget https://gazelle.ihe.net/apereo-cas-gazelle/cas.war
 sudo mv cas.war sso.war

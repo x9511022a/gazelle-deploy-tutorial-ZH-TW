@@ -260,7 +260,11 @@ sudo unzip -d / gazelle-tm-ear-6.6.0-dist.zip
 sudo apt install graphviz
 ```
 
-- 更改 jboss 設定，將以下設定增加在 <datasources\> 欄位底下
+- 更改 jboss 設定
+```shell
+sudo vim /usr/local/jboss7/standalone/configuration/standalone.xml
+```
+將以下設定增加在 <datasources\> 欄位底下
 
 ```xml
 <datasource jta="true" enabled="true" use-java-context="true"

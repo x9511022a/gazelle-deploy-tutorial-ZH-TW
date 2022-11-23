@@ -26,7 +26,8 @@ sudo apt-get install ./zulu-repo_1.0.0-3_all.deb
 sudo apt-get update
 
 # 安裝 java ， <X> 替換為版本
-sudo apt-get install zulu<X>-ca-jre-headless
+sudo apt-get install zulu7-ca-jre-headless
+sudo apt-get install zulu8-ca-jre-headless
 ```
 
 ## 安裝Jboss/Wildfly
@@ -124,8 +125,8 @@ vi /etc/cas/config/cas.properties
 ```
 並將以下database名稱改成與TestManagement相同的名稱，通常為gazelle
 ```properties
-cas.authn.attributeRepository.jdbc[0].url=jdbc:postgresql://localhost:5432/cas
-cas.authn.jdbc.query[0].url=jdbc:postgresql://localhost:5432/cas
+cas.authn.attributeRepository.jdbc[0].url=jdbc:postgresql://localhost:5432/cas   gazelle
+cas.authn.jdbc.query[0].url=jdbc:postgresql://localhost:5432/cas    gazelle
 ```
 修改/etc/cas/config/log4j2.xml，在</Policies>下的<RollingFile>類別中加入下面設定
 ```xml

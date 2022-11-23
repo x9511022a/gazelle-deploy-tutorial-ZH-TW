@@ -133,7 +133,7 @@ sudo vim /var/lib/tomcat8/conf/server.xml
 ```
 
 並將以下選項的註釋刪除，改成以下內容，port部分可以自行修改
-```
+```xml
 <Connector port="8209" protocol="AJP/1.3" redirectPort="8443" secretRequired="false" />
 ```
 

@@ -165,7 +165,7 @@ cas.authn.attributeRepository.jdbc[0].url=jdbc:postgresql://localhost:5432/cas  
 cas.authn.jdbc.query[0].url=jdbc:postgresql://localhost:5432/cas    gazelle
 ```
 
-修改/etc/cas/config/log4j2.xml，在</Policies\>下的<RollingFile\>類別中加入下面設定
+修改/etc/cas/config/log4j2.xml，在第一個<RollingFile\>的</Policies\>下中加入下面設定
 
 ```xml
             <DefaultRolloverStrategy max="5">

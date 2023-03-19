@@ -6,7 +6,7 @@
 Gazelle is a test bed aimed at testing the interoperability of eHealth information systems.
 
 ### Gazelle components
-* [SSO]([https://hackmd.io/@brian9429/B1GPV8i6i](https://github.com/x9511022a/gazelle-deploy-tutorial-ZH-TW/blob/main/updated/Gazelle%20SSO.md)
+* [SSO](https://github.com/x9511022a/gazelle-deploy-tutorial-ZH-TW/blob/main/updated/Gazelle%20SSO.md)
 * [Gazelle Test Management](https://github.com/x9511022a/gazelle-deploy-tutorial-ZH-TW/blob/main/updated/Gazelle%20TestManagement.md)
 * [Proxy](https://github.com/x9511022a/gazelle-deploy-tutorial-ZH-TW/blob/main/updated/Gazelle%20Proxy.md)
 * [EVSClient](https://github.com/x9511022a/gazelle-deploy-tutorial-ZH-TW/blob/main/updated/EVSClient.md)

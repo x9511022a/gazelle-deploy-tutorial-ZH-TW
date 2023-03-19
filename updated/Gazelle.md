@@ -6,12 +6,12 @@
 Gazelle is a test bed aimed at testing the interoperability of eHealth information systems.
 
 ### Gazelle components
-* [SSO](https://hackmd.io/@brian9429/B1GPV8i6i)
-* [Gazelle Test Management](https://hackmd.io/@brian9429/Sk5t5c3Ts)
-* [Proxy](https://hackmd.io/@brian9429/BkuSLThas)
-* [EVSClient](https://hackmd.io/@brian9429/B1eAeUEl3)
-* [Gazelle Fhir Validator](https://hackmd.io/@brian9429/SJ4pNdEl3)
-* [Demographic Data Server](https://hackmd.io/@brian9429/rkI8ocVg2)
+* [SSO]([https://hackmd.io/@brian9429/B1GPV8i6i](https://github.com/x9511022a/gazelle-deploy-tutorial-ZH-TW/blob/main/updated/Gazelle%20SSO.md)
+* [Gazelle Test Management](https://github.com/x9511022a/gazelle-deploy-tutorial-ZH-TW/blob/main/updated/Gazelle%20TestManagement.md)
+* [Proxy](https://github.com/x9511022a/gazelle-deploy-tutorial-ZH-TW/blob/main/updated/Gazelle%20Proxy.md)
+* [EVSClient](https://github.com/x9511022a/gazelle-deploy-tutorial-ZH-TW/blob/main/updated/EVSClient.md)
+* [Gazelle Fhir Validator](https://github.com/x9511022a/gazelle-deploy-tutorial-ZH-TW/blob/main/updated/Gazelle%20FHIR%20Validator.md)
+* [Demographic Data Server](https://github.com/x9511022a/gazelle-deploy-tutorial-ZH-TW/blob/main/updated/Demographic%20Data%20Server.md)
 
 ### How do Gazelle works
 all gazelle subsystem run's on AP servers (application servers),including Tomcat Jboss Wildfly

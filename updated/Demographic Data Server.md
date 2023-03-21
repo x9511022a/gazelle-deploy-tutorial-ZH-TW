@@ -49,7 +49,7 @@ ${databaseName} = demographic-data-server
 sudo systemctl stop jboss7.service
 
 # copy ear to jboss deployment folder
-sudo cp DemographicDataServer-ear-${version}.ear /usr/local/jboss7/standalone/deployments/EVSClient.ear
+sudo cp DemographicDataServer-ear-${version}.ear /usr/local/jboss7/standalone/deployments/DemographicDataServer.ear
 
 # start jboss
 sudo systemctl start jboss7.service
